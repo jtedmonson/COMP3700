@@ -1,3 +1,5 @@
+package edu.auburn;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -24,6 +26,8 @@ public class AddProductUI {
         view.setTitle("Add Product");
         view.setSize(600, 400);
         view.getContentPane().setLayout(new BoxLayout(view.getContentPane(), BoxLayout.PAGE_AXIS));
+
+        String[] labels = {"ProductID ", "Name ", "Price ", "Quantity "};
 
         JPanel line1 = new JPanel(new FlowLayout());
         line1.add(new JLabel("ProductID "));

@@ -1,3 +1,4 @@
+package edu.auburn;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,15 +37,6 @@ public class MainUI {
             public void actionPerformed(ActionEvent actionEvent) {
                 AddProductUI ac = new AddProductUI();
                 ac.run();
-            }
-        });
-
-        btnAddPurchase.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                AddPurchaseUI ap = new AddPurchaseUI();
-                ap.run();
             }
         });
 

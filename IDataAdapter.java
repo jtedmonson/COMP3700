@@ -1,3 +1,4 @@
+package edu.auburn;
 
 public interface IDataAdapter {
 

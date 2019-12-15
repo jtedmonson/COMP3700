@@ -1,8 +1,10 @@
+package edu.auburn;
+
 import javax.swing.*;
 
 public class StoreManager {
     public static final String DBMS_SQ_LITE = "SQLite";
-    public static final String DB_FILE = "C:\\Users\\ttn0007\\Desktop\\StoreManager\\data\\store.db";
+    public static final String DB_FILE = "C:/Users/ttn0007/Documents/store.db";
 
     IDataAdapter adapter = null;
     private static StoreManager instance = null;
@@ -11,11 +13,10 @@ public class StoreManager {
         if (instance == null) {
 
             String dbfile = DB_FILE;
-            if (dbfile.length() == 0) {
-                JFileChooser fc = new JFileChooser();
-                if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
-                    dbfile = fc.getSelectedFile().getAbsolutePath();
-            }
+            JFileChooser fc = new JFileChooser();
+            if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
+                dbfile = fc.getSelectedFile().getAbsolutePath();
+
             instance = new StoreManager(DBMS_SQ_LITE, dbfile);
         }
         return instance;
@@ -29,6 +30,10 @@ public class StoreManager {
             adapter = new SQLiteDataAdapter();
 
         adapter.connect(dbfile);
+        ProductModel product = adapter.loadProduct(3);
+
+        System.out.println("Loaded product: " + product);
+
     }
 
     public IDataAdapter getDataAdapter() {

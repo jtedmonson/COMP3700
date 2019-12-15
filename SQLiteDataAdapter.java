@@ -1,3 +1,4 @@
+package edu.auburn;
 
 import java.sql.Connection;
 import java.sql.Statement;
@@ -38,21 +39,19 @@ public class SQLiteDataAdapter implements IDataAdapter {
     }
 
     public ProductModel loadProduct(int productID) {
-        ProductModel product = null;
+        ProductModel product = new ProductModel();
 
         try {
             String sql = "SELECT ProductId, Name, Price, Quantity FROM Products WHERE ProductId = " + productID;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            if (rs.next()) {
-                product = new ProductModel();
-                product.mProductID = rs.getInt("ProductId");
-                product.mName = rs.getString("Name");
-                product.mPrice = rs.getDouble("Price");
-                product.mQuantity = rs.getDouble("Quantity");
-            }
+            product.mProductID = rs.getInt("ProductId");
+            product.mName = rs.getString("Name");
+            product.mPrice = rs.getDouble("Price");
+            product.mQuantity = rs.getDouble("Quantity");
 
-        } catch (SQLException e) {
+
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return product;
